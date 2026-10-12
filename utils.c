@@ -28,3 +28,4 @@ int ft_count_opt(char **argv)
     }
     return (count);
 }
+
