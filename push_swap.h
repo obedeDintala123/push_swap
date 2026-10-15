@@ -6,7 +6,7 @@
 /*   By: cpalata <cpalata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:18:49 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/14 19:55:04 by cpalata          ###   ########.fr       */
+/*   Updated: 2026/10/15 09:48:46 by cpalata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include	<stdlib.h>
 
 typedef struct no
 {
