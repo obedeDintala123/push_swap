@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = option.c utils.c
+SRC = validate_option.c validate_number.c utils.c validation.c
 OBJ = $(SRC:.c=.o)
 
 CC = cc

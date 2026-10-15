@@ -1,5 +1,20 @@
 #include "push_swap.h"
 
+void ft_free_array(char **array)
+{
+    int i;
+
+    if (!array)
+        return ;
+    i = 0;
+    while (array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
+}
+
 int	ft_iswhitespace(char *str)
 {
 	while (*str)
@@ -9,6 +24,17 @@ int	ft_iswhitespace(char *str)
 		str++;
 	}
 	return (0);
+}
+
+int ft_has_space(char *str)
+{
+    while (*str)
+    {
+        if (*str == ' ')
+            return (1);
+        str++;
+    }
+    return (0);
 }
 
 int ft_count_opt(char **argv)

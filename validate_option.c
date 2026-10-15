@@ -23,7 +23,7 @@ char **ft_get_opt(char **argv)
     return (options);
 }
 
-int ft_check_opt(char **options, char **valid_opt)
+static int ft_check_opt(char **options, char **valid_opt)
 {
     int i;
     int j;
@@ -46,7 +46,7 @@ int ft_check_opt(char **options, char **valid_opt)
     return (1);
 }
 
-int ft_check_opt_comb(char **options)
+static int ft_check_opt_comb(char **options)
 {
     int i;
     char **valid_comb;
@@ -78,7 +78,7 @@ int ft_check_opt_comb(char **options)
     return (0);
 }
 
-int ft_find_duplicates(char **argv)
+static int ft_find_duplicates(char **argv)
 {
     int i;
     int j;
@@ -86,12 +86,21 @@ int ft_find_duplicates(char **argv)
     i = 1;
     while (argv[i])
     {
-        j = i + 1;
-        while (argv[j])
+        if ((argv[i][0] == '-' && ft_isalpha(argv[i][1]))
+            || (argv[i][0] == '-' && argv[i][1] == '-'
+                && ft_isalpha(argv[i][2])))
         {
-            if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[j])) == 0)
-                return (1);
-            j++;
+            j = i + 1;
+            while (argv[j])
+            {
+                if (((argv[j][0] == '-' && ft_isalpha(argv[j][1]))
+                        || (argv[j][0] == '-' && argv[j][1] == '-'
+                            && ft_isalpha(argv[j][2])))
+                    && ft_strlen(argv[i]) == ft_strlen(argv[j])
+                    && ft_strncmp(argv[i], argv[j], ft_strlen(argv[i])) == 0)
+                    return (1);
+                j++;
+            }
         }
         i++;
     }
@@ -110,32 +119,19 @@ int ft_validate_opt(char **argv)
         "--adaptive",
         "--bench",
         NULL};
-    if (ft_count_opt(argv) > 2)
-        return (-1);
     options = ft_get_opt(argv);
     if (!options)
-        return (1);
+        return (0);
     if (ft_count_opt(argv) == 1 && (!ft_check_opt(options, valid_opt) || ft_find_duplicates(argv)))
     {
-        free(options);
-        return (-1);
+        free (options);
+        return (0);
     }
     if (ft_count_opt(argv) == 2 && (!ft_check_opt_comb(options) || ft_find_duplicates(argv)))
     {
-        free(options);
-        return (-1);
+        free (options);
+        return (0);
     }
-    free(options);
-    return (0);
-}
-
-int main(int argc, char **argv)
-{
-    if (argc < 2)
-        return (1);
-    if (ft_validate_opt(argv) == -1)
-        ft_putstr_fd("Error\n", 2);
-    else
-        ft_printf("%d - %d\n", ft_count_opt(argv), ft_validate_opt(argv));
-    return (0);
+    free (options);
+    return (1);
 }
