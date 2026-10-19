@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 11:00:05 by obdintal          #+#    #+#             */
-/*   Updated: 2026/10/19 11:15:25 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:45:00 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,34 +61,10 @@ static int	ft_check_opt(char **options, char **valid_opt)
 
 static int	ft_check_opt_comb(char **options)
 {
-	int		i;
-	char	**valid_comb;
-	char	*received_comb;
-
-	valid_comb = (char *[]){
-		"--simple--bench",
-		"--medium--bench",
-		"--complex--bench",
-		"--adaptive--bench",
-		"--bench--simple",
-		"--bench--medium",
-		"--bench--complex",
-		"--bench--adaptive", NULL};
-	received_comb = ft_strjoin(options[0], options[1]);
-	if (!received_comb)
-		return (0);
-	i = 0;
-	while (valid_comb[i])
-	{
-		if (ft_strncmp(valid_comb[i],
-			received_comb, ft_strlen(received_comb)) == 0)
-		{
-			free(received_comb);
-			return (1);
-		}
-		i++;
-	}
-	free(received_comb);
+	if (ft_is_opt(options[0], "--bench"))
+		return (ft_is_mode(options[1]));
+	if (ft_is_opt(options[1], "--bench"))
+		return (ft_is_mode(options[0]));
 	return (0);
 }
 
@@ -100,19 +76,13 @@ static int	ft_find_duplicates(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if ((argv[i][0] == '-' && ft_isalpha(argv[i][1]))
-			|| (argv[i][0] == '-' && argv[i][1] == '-'
-				&& ft_isalpha(argv[i][2])))
+		if (ft_is_flag(argv[i]))
 		{
 			j = i + 1;
 			while (argv[j])
 			{
-				if (((argv[j][0] == '-' && ft_isalpha(argv[j][1]))
-					|| (argv[j][0] == '-' && argv[j][1] == '-'
-						&& ft_isalpha(argv[j][2])))
-						&& ft_strlen(argv[i]) == ft_strlen(argv[j])
-						&& ft_strncmp(argv[i],
-							argv[j], ft_strlen(argv[i])) == 0)
+				if (ft_is_flag(argv[j]) && !ft_strncmp(argv[i],
+						argv[j], ft_strlen(argv[i]) + 1))
 					return (1);
 				j++;
 			}
@@ -125,30 +95,19 @@ static int	ft_find_duplicates(char **argv)
 int	ft_validate_opt(char **argv)
 {
 	char	**options;
-	char	**valid_opt;
+	int		count;
+	int		valid;
 
-	valid_opt = (char *[]){
-		"--simple",
-		"--medium",
-		"--complex",
-		"--adaptive",
-		"--bench",
-		NULL};
 	options = ft_get_opt(argv);
 	if (!options)
 		return (0);
-	if (ft_count_opt(argv) == 1
-		&& (!ft_check_opt(options, valid_opt) || ft_find_duplicates(argv)))
-	{
-		free (options);
-		return (0);
-	}
-	if (ft_count_opt(argv) == 2
-		&& (!ft_check_opt_comb(options) || ft_find_duplicates(argv)))
-	{
-		free (options);
-		return (0);
-	}
-	free (options);
-	return (1);
+	count = ft_count_opt(argv);
+	valid = 1;
+	if (count == 1)
+		valid = ft_check_opt(options, (char *[]){"--simple", "--medium",
+				"--complex", "--adaptive", "--bench", NULL});
+	else if (count == 2)
+		valid = ft_check_opt_comb(options);
+	free(options);
+	return (valid && !ft_find_duplicates(argv));
 }

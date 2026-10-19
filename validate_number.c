@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 11:22:04 by obdintal          #+#    #+#             */
-/*   Updated: 2026/10/19 11:22:47 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/19 12:17:10 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	ft_has_nbr(char **argv)
 	int	i;
 	int	j;
 
-	i = (ft_count_opt(argv) == 1) ? 2 :
-		(ft_count_opt(argv) == 2) ? 3 : 1;
+	i = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
 	while (argv[i])
 	{
 		j = 0;
@@ -86,12 +85,11 @@ char	**ft_get_nbr(char *str)
 
 static int	ft_has_duplicate(char **argv, int i, int j, char *nbr)
 {
-	int k;
-	int l;
-	char **values;
+	int		k;
+	int		l;
+	char	**values;
 
-	k = (ft_count_opt(argv) == 1) ? 2 :
-		(ft_count_opt(argv) == 2) ? 3 : 1;
+	k = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
 	while (k <= i)
 	{
 		values = ft_get_nbr(argv[k]);
@@ -116,8 +114,7 @@ int	ft_validate_nbr(char **argv)
 	int		j;
 	char	**values;
 
-	i = (ft_count_opt(argv) == 1) ? 2 :
-		(ft_count_opt(argv) == 2) ? 3 : 1;
+	i = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
 	while (argv[i])
 	{
 		values = ft_get_nbr(argv[i++]);
