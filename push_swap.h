@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:18:49 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/19 11:51:10 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/19 20:18:44 by cpalata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_printf/ft_printf.h"
 
 int		ft_iswhitespace(char *str);
+int		len_stack(t_no pilha);
 int		ft_count_opt(char **argv);
 int		ft_count_nbr(char **argv);
 int		ft_validate_opt(char **argv);
@@ -30,6 +31,7 @@ int		ft_has_nbr(char **argv);
 typedef struct no
 {
 	int			value;
+	int			index;
 	struct no	*next;
 }	t_no;
 void	push_a(t_no **pilha_a, t_no **pilha_b);

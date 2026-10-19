@@ -6,11 +6,23 @@
 /*   By: cpalata <cpalata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 18:05:49 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/14 19:49:36 by cpalata          ###   ########.fr       */
+/*   Updated: 2026/10/19 20:19:38 by cpalata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	len_stack(t_no pilha)
+{
+	int	size;
+
+	while (pilha)
+	{
+		size++;
+		pilha = pilha->next;
+	}
+	return (size);
+}
 
 void	push_a(t_no **pilha_a, t_no **pilha_b)
 {
