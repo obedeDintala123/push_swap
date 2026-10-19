@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 11:23:48 by obdintal          #+#    #+#             */
-/*   Updated: 2026/10/19 11:24:11 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/19 20:37:19 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	main(int argc, char **argv)
 {
-	return (ft_isvalid_input(argc, argv));
+	return (0);
 }

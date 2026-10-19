@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalata <cpalata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 17:05:33 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/14 19:51:05 by cpalata          ###   ########.fr       */
+/*   Updated: 2026/10/19 18:31:43 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static void	swap(t_no **pilha)
 {
-	t_no	*top;
 	t_no	*second;
+	t_no	*first;
 
-	if (*pilha == NULL || (*pilha)->next == NULL)
+	if (!*pilha || !(*pilha)->next)
 		return ;
-	top = *pilha;
-	second = (*pilha)->next;
+	first = *pilha;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
 	*pilha = second;
-	(*pilha)->next = top;
 }
 
 void	sa(t_no **pilha)

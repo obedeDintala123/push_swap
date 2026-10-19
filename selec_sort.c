@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   selec_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalata <cpalata@student.42luanda.com>     +#+  +:+       +#+        */
+/*   By: cpalata <cpalata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/17 08:59:04 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/19 20:12:33 by cpalata          ###   ########.fr       */
+/*   Updated: 2026/10/19 20:50:01 by cpalata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sign_index(t_no *pilha)
 {
-	t_no	corrent;
-	t_no	other;
+	t_no	*corrent;
+	t_no	*other;
 	int		count;
 
 	corrent = pilha;
@@ -30,7 +30,7 @@ void	sign_index(t_no *pilha)
 			other = other->next;
 		}
 		corrent->index = count;
-		corrent = count->next;
+		corrent = corrent->next;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 11:27:15 by obdintal          #+#    #+#             */
-/*   Updated: 2026/10/19 11:27:37 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/19 12:08:47 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,12 @@ int	ft_count_opt(char **argv)
 	return (count);
 }
 
+int	ft_ternary(bool cond1, bool cond2, int value1, int value2)
+{
+	if (cond1)
+		return (value1);
+	else if (cond2)
+		return (value2);
+	else
+		return (1);
+}
