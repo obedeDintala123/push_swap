@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:29:02 by obdintal          #+#    #+#             */
-/*   Updated: 2026/09/19 20:57:10 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/09/01 15:32:04 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar_fd(*format, 1, &count);
+			ft_putchar(*format, 1, &count);
 			format++;
 		}
 	}

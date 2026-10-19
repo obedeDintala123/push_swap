@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalata <cpalata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:18:49 by cpalata           #+#    #+#             */
-/*   Updated: 2026/10/16 13:11:50 by cpalata          ###   ########.fr       */
+/*   Updated: 2026/10/19 11:51:10 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include	<stdlib.h>
+# include "ft_printf/ft_printf.h"
+
+int		ft_iswhitespace(char *str);
+int		ft_count_opt(char **argv);
+int		ft_count_nbr(char **argv);
+int		ft_validate_opt(char **argv);
+int		ft_validate_nbr(char **argv);
+int		ft_has_space(char *str);
+void	ft_free_array(char **array);
+char	**ft_get_nbr(char *str);
+char	**ft_get_opt(char **argv);
+int		ft_has_nbr(char **argv);
 
 typedef struct no
 {

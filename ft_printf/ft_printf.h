@@ -6,7 +6,7 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:27:19 by obdintal          #+#    #+#             */
-/*   Updated: 2026/09/05 11:17:37 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/09/01 15:50:13 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 
 int		ft_printf(const char *format, ...);
 
-void	ft_putchar_fd(char c, int fd, int *count);
-void	ft_putnbr_fd(int n, int fd, int *count);
-void	ft_putstr_fd(char *s, int *count);
-void	ft_puthex_fd(unsigned int n, int is_uppercase, int fd, int *count);
+void	ft_putchar(char c, int fd, int *count);
+void	ft_putnbr(int n, int fd, int *count);
+void	ft_putstr(char *s, int *count);
+void	ft_puthex(unsigned int n, int is_uppercase, int fd, int *count);
 
 void	ft_print_d(va_list *arg, int *count);
 void	ft_print_u(va_list *arg, int *count);
