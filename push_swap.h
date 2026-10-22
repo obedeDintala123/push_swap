@@ -20,11 +20,12 @@
 typedef struct no
 {
 	int			value;
+	int			index;
 	struct no	*next;
 }	t_no;
 
 int		ft_iswhitespace(char *str);
-int		len_stack(t_no pilha);
+int		len_stack(t_no *pilha);
 int		ft_count_opt(char **argv);
 int		ft_validate_opt(char **argv);
 int		ft_validate_nbr(char **argv);
@@ -39,12 +40,6 @@ int		ft_is_flag(char *str);
 int		ft_is_opt(char *str, char *opt);
 int		ft_is_mode(char *str);
 
-typedef struct no
-{
-	int			value;
-	int			index;
-	struct no	*next;
-}	t_no;
 
 void	push_a(t_no **pilha_a, t_no **pilha_b);
 void	push_b(t_no **pilha_b, t_no **pilha_a);
@@ -58,8 +53,8 @@ void	sa(t_no **pilha);
 void	sb(t_no **pilha);
 void	ss(t_no **pilha_a, t_no **pilha_b);
 
-t_no	*ft_create_stack(char **values);
 void	ft_chose_method(t_no *pilha_a);
 void	ft_free_stack(t_no *str);
+int		ft_push_value(t_no **stack, int value);
 
 #endif

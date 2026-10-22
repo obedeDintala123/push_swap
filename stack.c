@@ -12,27 +12,26 @@
 
 #include "push_swap.h"
 
-t_no	*ft_create_stack(char **values)
+int	ft_push_value(t_no **stack, int value)
 {
-	t_no	*head;
 	t_no	*node;
-	int		i;
-	int		size;
+	t_no	*last;
 
-	head = NULL;
-	i = 0;
-	size = sizeof(values) / sizeof(values[0]);
-	while (i < size)
+	node = malloc(sizeof(t_no));
+	if (!node)
+		return (0);
+	node->value = value;
+	node->next = NULL;
+	if (!*stack)
 	{
-		node = malloc(sizeof(t_no));
-		if (!node)
-			return (NULL);
-		node->value = ft_atoi(values[i]);
-		node->next = head;
-		head = node;
-		i++;
+		*stack = node;
+		return (1);
 	}
-	return (head);
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	last->next = node;
+	return (1);
 }
 
 void	ft_free_stack(t_no *str)

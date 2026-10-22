@@ -22,7 +22,7 @@ SRC = disorder.c \
 	utils_second.c \
 	validate_number.c \
 	validate_option.c \
-	stack.c \
+	stack.c
 
 OBJ = $(SRC:.c=.o)
 

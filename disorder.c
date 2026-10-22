@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 
 static float	ft_compute_disorder(t_no *pilha_a)
@@ -45,9 +46,11 @@ void	ft_chose_method(t_no *pilha_a)
 
 	disorder = ft_compute_disorder(pilha_a);
 	if (disorder < 0.2)
-		ft_printf("%s\n", "simple");
+		printf("%s - %.1f\n", "simple", disorder);
 	else if (disorder >= 0.2 && disorder < 0.5)
-		ft_printf("%s\n", "medium");
+		printf("%s - %.1f\n", "medium", disorder);
 	else if (disorder >= 0.5)
-		ft_printf("%s\n", "complex");
+		printf("%s - %.1f\n", "complex", disorder);
+	else
+		printf("%.1f\n", disorder);
 }
