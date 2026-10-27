@@ -23,6 +23,16 @@ int	ft_is_opt(char *str, char *opt)
 	return (!ft_strncmp(str, opt, ft_strlen(opt) + 1));
 }
 
+int	ft_first_nbr_idx(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i] && ft_is_flag(argv[i]))
+		i++;
+	return (i);
+}
+
 int	ft_is_mode(char *str)
 {
 	return (ft_is_opt(str, "--simple") || ft_is_opt(str, "--medium")

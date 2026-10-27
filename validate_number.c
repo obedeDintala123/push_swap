@@ -17,7 +17,7 @@ int	ft_has_nbr(char **argv)
 	int	i;
 	int	j;
 
-	i = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
+	i = ft_first_nbr_idx(argv);
 	while (argv[i])
 	{
 		j = 0;
@@ -89,7 +89,7 @@ static int	ft_has_duplicate(char **argv, int i, int j, char *nbr)
 	int		l;
 	char	**values;
 
-	k = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
+	k = ft_first_nbr_idx(argv);
 	while (k <= i)
 	{
 		values = ft_get_nbr(argv[k]);
@@ -114,7 +114,7 @@ int	ft_validate_nbr(char **argv)
 	int		j;
 	char	**values;
 
-	i = ft_ternary(ft_count_opt(argv) == 1, ft_count_opt(argv) == 2, 2, 3);
+	i = ft_first_nbr_idx(argv);
 	while (argv[i])
 	{
 		values = ft_get_nbr(argv[i++]);

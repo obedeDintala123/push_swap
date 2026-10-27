@@ -28,18 +28,24 @@ static void	rotate(t_no **pilha)
 	last->next = first;
 }
 
-void	rotate_a(t_no **pilha)
+void	rotate_a(t_no **pilha, t_bench *bench)
 {
 	rotate(pilha);
+	bench_count(bench, "ra");
+	ft_printf("ra\n");
 }
 
-void	rotate_b(t_no **pilha)
+void	rotate_b(t_no **pilha, t_bench *bench)
 {
 	rotate(pilha);
+	bench_count(bench, "rb");
+	ft_printf("rb\n");
 }
 
-void	rr_rotate(t_no **pilha_a, t_no **pilha_b)
+void	rr_rotate(t_no **pilha_a, t_no **pilha_b, t_bench *bench)
 {
-	rotate_a(pilha_a);
-	rotate_b(pilha_b);
+	rotate(pilha_a);
+	rotate(pilha_b);
+	bench_count(bench, "rr");
+	ft_printf("rr\n");
 }

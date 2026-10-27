@@ -26,18 +26,24 @@ static void	swap(t_no **pilha)
 	*pilha = second;
 }
 
-void	sa(t_no **pilha)
+void	sa(t_no **pilha, t_bench *bench)
 {
 	swap(pilha);
+	bench_count(bench, "sa");
+	ft_printf("sa\n");
 }
 
-void	sb(t_no **pilha)
+void	sb(t_no **pilha, t_bench *bench)
 {
 	swap(pilha);
+	bench_count(bench, "sb");
+	ft_printf("sb\n");
 }
 
-void	ss(t_no **pilha_a, t_no **pilha_b)
+void	ss(t_no **pilha_a, t_no **pilha_b, t_bench *bench)
 {
-	sa(pilha_a);
-	sb(pilha_b);
+	swap(pilha_a);
+	swap(pilha_b);
+	bench_count(bench, "ss");
+	ft_printf("ss\n");
 }

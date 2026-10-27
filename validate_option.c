@@ -108,6 +108,8 @@ int	ft_validate_opt(char **argv)
 				"--complex", "--adaptive", "--bench", NULL});
 	else if (count == 2)
 		valid = ft_check_opt_comb(options);
+	else if (count > 2)
+		valid = 0;
 	free(options);
 	return (valid && !ft_find_duplicates(argv));
 }

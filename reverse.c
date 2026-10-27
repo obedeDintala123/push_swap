@@ -32,18 +32,24 @@ static void	reverse(t_no **pilha)
 	*pilha = last;
 }
 
-void	reverse_a(t_no **pilha_a)
+void	reverse_a(t_no **pilha_a, t_bench *bench)
 {
 	reverse(pilha_a);
+	bench_count(bench, "rra");
+	ft_printf("rra\n");
 }
 
-void	reverse_b(t_no **pilha_b)
+void	reverse_b(t_no **pilha_b, t_bench *bench)
 {
 	reverse(pilha_b);
+	bench_count(bench, "rrb");
+	ft_printf("rrb\n");
 }
 
-void	rrr_reverse(t_no **pilha_a, t_no **pilha_b)
+void	rrr_reverse(t_no **pilha_a, t_no **pilha_b, t_bench *bench)
 {
 	reverse(pilha_a);
 	reverse(pilha_b);
+	bench_count(bench, "rrr");
+	ft_printf("rrr\n");
 }

@@ -13,10 +13,18 @@
 NAME = push_swap
 
 SRC = disorder.c \
+	disorder_utils.c \
+	benchmark.c \
+	benchmark_utils.c \
+	chunk_sort.c \
+	chunk_sort_utils.c \
 	main.c \
 	push.c \
+	radix_sort.c \
 	rotate.c \
 	reverse.c \
+	selec_sort.c \
+	small_sort.c \
 	swap.c \
 	utils.c \
 	utils_second.c \

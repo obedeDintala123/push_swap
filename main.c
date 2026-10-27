@@ -6,58 +6,50 @@
 /*   By: obdintal <obdintal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 11:23:48 by obdintal          #+#    #+#             */
-/*   Updated: 2026/10/19 21:00:31 by obdintal         ###   ########.fr       */
+/*   Updated: 2026/10/27 00:00:00 by obdintal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_print_stack(t_no *stack)
+static int	build_stack(t_no **stack_a, int argc, char **argv)
 {
-	ft_printf("Stack A (top -> bottom): ");
-	while (stack)
+	char	**values;
+	int		i;
+	int		j;
+
+	i = ft_first_nbr_idx(argv);
+	while (i < argc)
 	{
-		ft_printf("%d", stack->value);
-		if (stack->next)
-			ft_printf(" -> ");
-		stack = stack->next;
+		values = ft_get_nbr(argv[i++]);
+		if (!values)
+			return (0);
+		j = 0;
+		while (values[j])
+		{
+			if (!ft_push_value(stack_a, ft_atoi(values[j++])))
+				return (ft_free_array(values), 0);
+		}
+		ft_free_array(values);
 	}
-	ft_printf("\n");
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_no	*stack_a;
-	char	**values;
-	int		i;
-	int		j;
 
 	stack_a = NULL;
-	i = 1;
-	while (i < argc)
+	if (argc < 2)
+		return (0);
+	if (!ft_validate_opt(argv) || !ft_has_nbr(argv) || !ft_validate_nbr(argv))
+		return (ft_putstr_fd("Error\n", 2), 1);
+	if (!build_stack(&stack_a, argc, argv))
 	{
-		values = ft_get_nbr(argv[i]);
-		if (!values)
-		{
-			ft_free_stack(stack_a);
-			return (ft_putstr_fd("Error\n", 2), 1);
-		}
-		j = 0;
-		while (values[j])
-		{
-			if (!ft_push_value(&stack_a, ft_atoi(values[j])))
-			{
-				ft_free_array(values);
-				ft_free_stack(stack_a);
-				return (ft_putstr_fd("Error\n", 2), 1);
-			}
-			j++;
-		}
-		ft_free_array(values);
-		i++;
+		ft_free_stack(stack_a);
+		return (ft_putstr_fd("Error\n", 2), 1);
 	}
-	ft_print_stack(stack_a);
-	ft_chose_method(stack_a);
+	ft_chose_method(&stack_a, argv);
 	ft_free_stack(stack_a);
 	return (0);
 }

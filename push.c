@@ -16,6 +16,7 @@ int	len_stack(t_no *pilha)
 {
 	int	size;
 
+	size = 0;
 	while (pilha)
 	{
 		size++;
@@ -24,7 +25,7 @@ int	len_stack(t_no *pilha)
 	return (size);
 }
 
-void	push_a(t_no **pilha_a, t_no **pilha_b)
+void	push_a(t_no **pilha_a, t_no **pilha_b, t_bench *bench)
 {
 	t_no	*top_b;
 
@@ -34,9 +35,11 @@ void	push_a(t_no **pilha_a, t_no **pilha_b)
 	*pilha_b = top_b->next;
 	top_b->next = *pilha_a;
 	*pilha_a = top_b;
+	bench_count(bench, "pa");
+	ft_printf("pa\n");
 }
 
-void	push_b(t_no **pilha_a, t_no **pilha_b)
+void	push_b(t_no **pilha_a, t_no **pilha_b, t_bench *bench)
 {
 	t_no	*top_a;
 
@@ -46,4 +49,6 @@ void	push_b(t_no **pilha_a, t_no **pilha_b)
 	*pilha_a = top_a->next;
 	top_a->next = *pilha_b;
 	*pilha_b = top_a;
+	bench_count(bench, "pb");
+	ft_printf("pb\n");
 }
